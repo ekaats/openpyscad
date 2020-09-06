@@ -27,6 +27,7 @@ def get_cube_y(drill_holes):
 
 def build_maincube(drill_holes, spacing):
 
+    # The main cube dimensions are based upon the maximum X and Y dimensions
     maincube = ops.Cube([
         get_cube_x(drill_holes=drill_holes),
         get_cube_y(drill_holes=drill_holes), 50])
