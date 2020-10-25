@@ -44,8 +44,8 @@ module enclosureLid( boardType = UNO, wall = 3, offset = 3, cornerRadius = 3, ve
             
 		}
        
-            // Add the mounting holes
-            translate([0,0,-2]) // moves all four mounting holes + window together
+            // Add the mounting holes and window
+            translate([5,0,-2]) // moves all four mounting holes + window together
                 union() {
                 REL_X = 4;
                 REL_Y = 1;
@@ -54,33 +54,28 @@ module enclosureLid( boardType = UNO, wall = 3, offset = 3, cornerRadius = 3, ve
                 translate([REL_X, REL_Y,0])    
                     cylinder(d=2, h=wall + 5, $fn=32);
                     
-                translate([REL_X,REL_Y +  65,0])
+                translate([REL_X,REL_Y +  66,0])
                     cylinder(d=2, h=wall + 5, $fn=32);
                     
-                translate([REL_X + 45,REL_Y + 65,0])
+                translate([REL_X + 46,REL_Y + 66,0])
                     cylinder(d=2, h=wall + 5, $fn=32);
                     
-                translate([REL_X + 45,REL_Y + 0,0])
+                translate([REL_X + 46,REL_Y + 0,0])
                     cylinder(d=2, h=wall + 5, $fn=32);
                     
                 // Create the window
                 
-                boundingBox(boardType = boardType, height = wall + 4, offset = wall -10, include=PCB, cornerRadius = wall);
+                boundingBox(boardType = boardType, height = wall + 4, offset = wall -9, include=PCB, cornerRadius = wall);
                 }
-            
-            
-        
 	}
 }
 
+//
+//translate([0, 0, 0]) {
+//	enclosure();
+//}
 
-translate([0, 0, 0]) {
-	enclosure();
-
-
-}
-
-rotate([180,0,0])
+rotate([180,180,0])
 translate([75, -75, 0]) {
-	enclosureLid();
+	enclosureLid(wall=2);
 }
